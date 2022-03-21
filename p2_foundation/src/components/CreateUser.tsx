@@ -4,7 +4,7 @@ import './Style.css';
 //Regex for E-mail
 const RegexEmail = RegExp("^[^@\\s]+@[^@\\s.]+\\.[^@.\\s]+$");
 //Regex for Password
-const RegexPassword = RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$");
+const RegexPassword = RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/);
 
 //modify the React.Component parameters.
 //Interfaces that define the props and states for our signup form
@@ -41,16 +41,18 @@ export class CreateUser extends React.Component<CreateUserProps, CreateUserState
         {
             case 'username':
                 errors.username = value.length < 5 ? 'Username must be 5 characters long!': '';
-            break;
+                break;
 
             case 'email':
                 errors.email = RegexEmail.test(value)? '': 'Email is not valid!';
-            break;
+                break;
 
             case 'password':
+            
+                console.log ("password less than 8 char" + value.length)
                 //errors.password = value.length < 8 ? 'Password must be eight characters long!': '';
-                errors.password = RegexPassword.test(value)? '': 'Password must have  eight characters, special character, Upper and Lower case letters';
-            break;
+                errors.password = RegexPassword.test(value) ? '': 'Password must have  eight characters, special character, Upper and Lower case letters';
+                break;
             
             default:
                 break;
