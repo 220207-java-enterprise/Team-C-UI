@@ -1,5 +1,3 @@
-
-
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -25,6 +23,6 @@ function App() {
       <Route path="/dashboard" element={<Dashboard currentUser={authUser}/>}/>
     </Routes>
   );
-}
+};
 
 export default App;

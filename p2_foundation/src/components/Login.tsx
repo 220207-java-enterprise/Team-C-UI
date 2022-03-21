@@ -97,7 +97,7 @@ function Login(props: ILoginProps) {
         props.currentUser ? <Navigate to="/dashboard"/> : 
         <>
             <h4>Log into your account</h4>
-            <div>                   //when this change its handle @ line 35-38
+        <div>                   {/*when this change its handle @ line 35-38*/}
                 <input type="text" id="username" placeholder="Enter your username" onChange={updateUsername}/>
                 <br/><br/>
                 <input type="password" id="password" placeholder="Enter your password" onChange={updatePassword}/>
@@ -106,10 +106,10 @@ function Login(props: ILoginProps) {
                 <br/><br/>
             </div>
 
-            //true- render this 'errorMessage' or false- render <></>(nothing)
-            //renders conditionally and pass down error message that it manage 
-            //as piece of state, passing it down into error message component,
-            //so it can properly render it to the screen
+            {/*true- render this 'errorMessage' or false- render <></>(nothing)
+            renders conditionally and pass down error message that it manage 
+            as piece of state, passing it down into error message component,
+            so it can properly render it to the screen*/}
             { errorMsg ? <ErrorMessage errorMessage={errorMsg}/> : <></> }
         </>
     );
