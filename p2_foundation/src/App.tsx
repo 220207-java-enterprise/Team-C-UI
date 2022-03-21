@@ -12,9 +12,9 @@ import { CreateUser } from './components/CreateUser';
 // and setcurrentuser prop
 function App() {
 
-  return (
-    <CreateUser/>
-   );
+  //return (
+   // <CreateUser/>
+   //);
 
       //Generic- allows to take a Principal or undefined
   let [authUser, setAuthUser] = useState<Principal>();
@@ -24,6 +24,7 @@ function App() {
 
   return (
     <Routes>
+      <Route path="/CreateUser" element={<CreateUser/>}/>
       <Route path="/login" element={<Login currentUser={authUser} setCurrentUser={setAuthUser}/>}/>
       <Route path="/dashboard" element={<Dashboard currentUser={authUser}/>}/>
     </Routes>

@@ -2,9 +2,9 @@ import React from "react";
 import './Style.css';
 
 //Regex for E-mail
-//const Regex = RegExp(/^\s?[A-Z0–9]+[A-Z0–9._+-]{0,}@[A-Z0–9._+-]+\.[A-Z0–9]{2,4}\s?$/i);
+const RegexEmail = RegExp("^[^@\\s]+@[^@\\s.]+\\.[^@.\\s]+$");
 //Regex for Password
-//const Regex = RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$");
+const RegexPassword = RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$");
 
 //modify the React.Component parameters.
 //Interfaces that define the props and states for our signup form
@@ -43,13 +43,13 @@ export class CreateUser extends React.Component<CreateUserProps, CreateUserState
                 errors.username = value.length < 5 ? 'Username must be 5 characters long!': '';
             break;
 
-            //case 'email':
-                //errors.email = Regex.test(value)? '': 'Email is not valid!';
-            //break;
+            case 'email':
+                errors.email = RegexEmail.test(value)? '': 'Email is not valid!';
+            break;
 
             case 'password':
-                errors.password = value.length < 8 ? 'Password must be eight characters long!': '';
-                //errors.password = Regex.test(value)? '': 'Password is not valid!';
+                //errors.password = value.length < 8 ? 'Password must be eight characters long!': '';
+                errors.password = RegexPassword.test(value)? '': 'Password must have  eight characters, special character, Upper and Lower case letters';
             break;
             
             default:
