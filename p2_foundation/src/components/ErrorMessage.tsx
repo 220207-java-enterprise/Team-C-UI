@@ -3,7 +3,7 @@ interface IErrorMessage {
     errorMessage: string
 }
 
-//THese error message take in props
+//These error message take in props
 //Renders out props
 //Props are peices of data that are passed into component as 
 //attributes from some component that is rendering that target
