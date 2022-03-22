@@ -85,7 +85,13 @@ p, div {
     width: 100%;
   }
    
-  .submit {
+  .createUser-btn {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .login-btn {
     width: 100%;
     display: flex;
     flex-wrap: wrap;

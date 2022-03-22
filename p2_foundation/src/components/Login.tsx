@@ -1,9 +1,10 @@
 import { SyntheticEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { Principal } from "../models/principal";
 import { authenticate } from "../remote/auth-service";
 import ErrorMessage from "./ErrorMessage";
+import './Style.css';
 
 
 //Props are peices of data that are passed into component as 
@@ -98,12 +99,19 @@ function Login(props: ILoginProps) {
         <>
             <h4>Log into your account</h4>
         <div>                   {/*when this change its handle @ line 35-38*/}
-                <input type="text" id="username" placeholder="Enter your username" onChange={updateUsername}/>
+                <input type="text" id="userName" placeholder="Enter your username" onChange={updateUsername}/>
                 <br/><br/>
                 <input type="password" id="password" placeholder="Enter your password" onChange={updatePassword}/>
                 <br/><br/>
                 <button id="login-button" onClick={login}>Login</button>
                 <br/><br/>
+
+                <div id='creatUser-link'>
+                    <Link id='createUser' to ='/createUser'>
+                        <button id="createUser" onClick={login}>Creat User</button>
+                    </Link>
+                </div>
+                
             </div>
 
             {/*true- render this 'errorMessage' or false- render <></>(nothing)
