@@ -25,7 +25,7 @@ function App() {
       <Route path="/" element={<Dashboard currentUser={undefined}/>}/>
       <Route path="/dashboard" element={<Dashboard currentUser={authUser}/>}/>
       <Route path="/CreateUser" element={<CreateUser/>}/>
-      <Route path="/login" element={<Login currentUser={authUser} setCurrentUser={setAuthUser}/>}/>
+      <Route path="/Login" element={<Login currentUser={authUser} setCurrentUser={setAuthUser}/>}/>
     </Routes>
   );
 };

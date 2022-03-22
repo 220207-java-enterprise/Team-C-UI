@@ -95,31 +95,36 @@ function Login(props: ILoginProps) {
     }
 
     return (
-        props.currentUser ? <Navigate to="/dashboard"/> : 
-        <>
-            <h4>Log into your account</h4>
-        <div>                   {/*when this change its handle @ line 35-38*/}
-                <input type="text" id="userName" placeholder="Enter your username" onChange={updateUsername}/>
-                <br/><br/>
-                <input type="password" id="password" placeholder="Enter your password" onChange={updatePassword}/>
-                <br/><br/>
-                <button id="login-button" onClick={login}>Login</button>
-                <br/><br/>
-
-                <div id='creatUser-link'>
-                    <Link id='createUser' to ='/createUser'>
-                        <button id="createUser" onClick={login}>Creat User</button>
-                    </Link>
-                </div>
+        props.currentUser ? <Navigate to="/dashboard"/> :
+        <div className='wrapper'>
+            <div className='form-wrapper'>
                 
-            </div>
+                <>
+                        <h4>Log into your account</h4>
+                    <div>                   {/*when this change its handle @ line 35-38*/}
+                            <input type="text" id="userName" placeholder="Enter your username" onChange={updateUsername}/>
+                            <br/><br/>
+                            <input type="password" id="password" placeholder="Enter your password" onChange={updatePassword}/>
+                            <br/><br/>
+                            <button id="login-button" onClick={login}>Login</button>
+                            <br/><br/>
 
-            {/*true- render this 'errorMessage' or false- render <></>(nothing)
-            renders conditionally and pass down error message that it manage 
-            as piece of state, passing it down into error message component,
-            so it can properly render it to the screen*/}
-            { errorMsg ? <ErrorMessage errorMessage={errorMsg}/> : <></> }
-        </>
+                            <div id='creatUser-link'>
+                                <Link id='createUser' to ='/createUser'>
+                                    <button id="createUser" onClick={login}>Creat User</button>
+                                </Link>
+                            </div>
+                            
+                        </div>
+
+                        {/*true- render this 'errorMessage' or false- render <></>(nothing)
+                        renders conditionally and pass down error message that it manage 
+                        as piece of state, passing it down into error message component,
+                        so it can properly render it to the screen*/}
+                        { errorMsg ? <ErrorMessage errorMessage={errorMsg}/> : <></> }
+                </>
+                </div>
+                </div>
     );
 
 }
