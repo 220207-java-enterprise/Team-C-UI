@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Principal } from "../models/principal";
+import { authenticate } from "../remote/auth-service";
 import './Style.css';
 
 //Regex for E-mail
 const RegexEmail = RegExp("^[^@\\s]+@[^@\\s.]+\\.[^@.\\s]+$");
 //Regex for Password
-const RegexPassword = RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$");
+const RegexPassword = RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/);
+//
+const RegexUsername =RegExp("^[a-zA-Z0-9]{8,25}/");
+
 
 //modify the React.Component parameters.
 //Interfaces that define the props and states for our signup form
@@ -12,6 +18,9 @@ interface CreateUserProps
     {
         name?: any;
         value?: any;
+
+        //createUser: Principal | undefined,
+        //setCreateUser: (nextUser: Principal | undefined) => void
     }
 
 //State property that stores its error in each field
@@ -40,17 +49,21 @@ export class CreateUser extends React.Component<CreateUserProps, CreateUserState
         switch (name) 
         {
             case 'username':
-                errors.username = value.length < 5 ? 'Username must be 5 characters long!': '';
-            break;
+                console.log ("username is less than 8 char" + value.length)
+                //errors.username = value.length < 5 ? 'Username must be 5 characters long!': '';
+                errors.username = RegexUsername.test(value)? '': 'Username must be 8 characters, include one Number, and Upper and Lower case letters !';
+                break;
 
             case 'email':
                 errors.email = RegexEmail.test(value)? '': 'Email is not valid!';
-            break;
+                break;
 
             case 'password':
+            
+                console.log ("password is less than 8 char" + value.length)
                 //errors.password = value.length < 8 ? 'Password must be eight characters long!': '';
-                errors.password = RegexPassword.test(value)? '': 'Password must have  eight characters, special character, Upper and Lower case letters';
-            break;
+                errors.password = RegexPassword.test(value) ? '': 'Password must have  eight characters, special character, Upper and Lower case letters';
+                break;
             
             default:
                 break;
@@ -76,8 +89,10 @@ export class CreateUser extends React.Component<CreateUserProps, CreateUserState
             } 
         }
 
-          this.state = initialState;
-          this.handleChange = this.handleChange.bind(this);
+        this.state = initialState;
+        this.handleChange = this.handleChange.bind(this);
+        
+
     }
 
 
@@ -135,9 +150,17 @@ export class CreateUser extends React.Component<CreateUserProps, CreateUserState
                      {errors.password.length > 0 &&  <span style={{color: "red"}}>{errors.password}</span>}
                   </div> 
 
-                  <div className='submit'>
+                  <div className='createUser-btn'>
                      <button>Create New</button>
                   </div>
+
+                  <div className='login-btn'>
+                    <Link to='/Login'>
+                        <button type="button">Login</button>
+                    </Link>
+                 </div>
+
+                  
              </form>
          </div>
       </div>

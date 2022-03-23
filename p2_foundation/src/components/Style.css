@@ -25,7 +25,7 @@ p, div {
     background-color: #fefefe;
   }
   
-  .form-wrapper > h2 {
+  .form-wrapper > h2,h4 {
     display: flex;
     justify-content: center;
     font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
@@ -85,7 +85,13 @@ p, div {
     width: 100%;
   }
    
-  .submit {
+  .createUser-btn {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .login-btn {
     width: 100%;
     display: flex;
     flex-wrap: wrap;

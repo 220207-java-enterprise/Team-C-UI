@@ -6,15 +6,13 @@ import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import { Principal } from './models/principal';
 import { CreateUser } from './components/CreateUser';
+import { Reimbursement } from './models/reimbursement';
 
 
 //App component renders a login component and passes into  it authuser prop
 // and setcurrentuser prop
 function App() {
 
-  //return (
-   // <CreateUser/>
-   //);
 
       //Generic- allows to take a Principal or undefined
   let [authUser, setAuthUser] = useState<Principal>();
@@ -24,9 +22,10 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/CreateUser" element={<CreateUser/>}/>
-      <Route path="/login" element={<Login currentUser={authUser} setCurrentUser={setAuthUser}/>}/>
+      <Route path="/" element={<Dashboard currentUser={undefined}/>}/>
       <Route path="/dashboard" element={<Dashboard currentUser={authUser}/>}/>
+      <Route path="/CreateUser" element={<CreateUser/>}/>
+      <Route path="/Login" element={<Login currentUser={authUser} setCurrentUser={setAuthUser}/>}/>
     </Routes>
   );
 };
