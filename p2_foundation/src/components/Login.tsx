@@ -109,9 +109,9 @@ function Login(props: ILoginProps) {
                             <button id="login-button" onClick={login}>Login</button>
                             <br/><br/>
 
-                            <div id='creatUser-link'>
+                            <div id='createUser-link'>
                                 <Link id='createUser' to ='/createUser'>
-                                    <button id="createUser" onClick={login}>Creat User</button>
+                                    <button id="createUser" onClick={login}>Create User</button>
                                 </Link>
                             </div>
                             

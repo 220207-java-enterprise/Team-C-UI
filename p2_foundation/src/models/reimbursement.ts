@@ -16,7 +16,7 @@ export class Reimbursement {
     
 
     constructor(id: string, amount: string, submitted: string, resolved: Boolean, description: string, paymentId: string, authorId: string, 
-        resolverId: string, statusId: string, typeId: {id: string, typeName: string} 
+        resolverId: string, statusId: string, typeId: string
         //category: {id: string, categoryName: string}
         ) {
         this.id = id;
@@ -28,7 +28,7 @@ export class Reimbursement {
         this.authorId = authorId;
         this.resolverId = resolverId;
         this.statusId = statusId;
-        this.typeId = typeId.typeName;
+        this.typeId = typeId;
         //this.category = category.categoryName;
     }
 

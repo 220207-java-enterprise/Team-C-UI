@@ -41,10 +41,11 @@ function Dashboard(props: IDashboardProps) {
                         <h5>AuthorId: {reimbursement.authorId}</h5>
                         <h5>ResolvedId: {reimbursement.resolverId}</h5>
                         <h5>StatusId: {reimbursement.statusId}</h5>
-                        <h5>TypeId: {reimbursement.type.typeId.typeIdName}</h5>
+                        <h5>TypeId: {reimbursement.typeId}</h5>
                         {/*<h5>Category: {reimbursement.category.categoryName}</h5>*/}
                         <hr/>
                     </div>
+                    
                 )
             })}
         </>
