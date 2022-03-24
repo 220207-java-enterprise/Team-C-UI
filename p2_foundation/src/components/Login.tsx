@@ -83,7 +83,13 @@ function Login(props: ILoginProps) {
                 let authUser = await resp.data;
                 console.log(authUser);
                 props.setCurrentUser(authUser);
-                navigate('/dashboard');
+                if (authUser.role == 'Admin'){
+                    navigate('/updateuser');
+                }
+                // else{
+                //     navigate('/dashboard');
+                // }
+                
             }
             
             //EXPLICT(e:any) any not an implicit(e) any
@@ -95,7 +101,7 @@ function Login(props: ILoginProps) {
     }
 
     return (
-        props.currentUser ? <Navigate to="/dashboard"/> :
+        // props.currentUser ? <Navigate to="/dashboard"/> :
         <div className='wrapper'>
             <div className='form-wrapper'>
                 
