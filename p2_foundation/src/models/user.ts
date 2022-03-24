@@ -1,23 +1,19 @@
 export class User {
 
-    id: string;
-    firstName: string;
-    lastName: string;
+    firstname: string;
+    lastname: string;
     email: string;
     username: string;
     password: string; 
-    isActive:string;
-    role: {id: string, roleName: string}
 
-    constructor(id: string, firstName: string, lastName: string, email: string, username: string, password: string, isActive: string, role: {id: string, roleName: string}) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
+    constructor(firstname: string, lastname: string, email: string, username: string, password: string) {
+  
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.email = email;
         this.username = username;
         this.password = password;
-        this.isActive = isActive;
-        this.role = role;
+
     }
 
 }
