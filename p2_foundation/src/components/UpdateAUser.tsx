@@ -7,18 +7,20 @@ import './Style.css';
 import { User } from "../models/user";
 import React, { SyntheticEvent, useState } from "react";
 import { UpdateUser } from "../models/updateuser";
+import { Principal } from "../models/principal";
 
 //Props are peices of data that are passed into component as 
 //attributes from some component that is rendering that target
 //component
 interface IUpdateProps {
+    currentUser: Principal | undefined,
     updateUser: UpdateUser | undefined,
     setUpdateUser: (nextUpdateUser: UpdateUser | undefined) => void
 }
 
 {/*The only way a CHILD can communicate with parent is by props that passed UP into it,
 that allow it call a function that is defined elsewhere. PARENT pass it DOWN */}
-function UpdatedUser(props: IUpdateProps) {
+function UpdateAUser(props: IUpdateProps) {
 
     // destructuring assignment
     let [userId, setUserId] = useState('');
@@ -26,10 +28,10 @@ function UpdatedUser(props: IUpdateProps) {
     let [firstname, setFirstame] = useState('');
     let [lastname, setLastname] = useState('');
     let [email, setEmail] = useState('');
-    let [isactive, setIsactive] = useState<boolean>();
+    let [isactive, setIsactive] = useState('');
     let [role, setRole] = useState('');
-    const [password, setPassword] = useState<string | number>();
-    const [errorMsg, setErrorMsg] = useState('');
+    let [password, setPassword] = useState<string | number>();
+    let [errorMsg, setErrorMsg] = useState('');
     //These are ^^^ are pieces of state that are not passed down
     //to anything
 
@@ -66,7 +68,7 @@ function UpdatedUser(props: IUpdateProps) {
     let updateIsactive= function(e: SyntheticEvent) {
         let isactiveVal = (e.target as HTMLInputElement).value;
         console.log(isactiveVal);
-        setIsactive(true);
+        setIsactive(isactiveVal);
     }
 
     let updateRole= function(e: SyntheticEvent) {
@@ -86,13 +88,13 @@ function UpdatedUser(props: IUpdateProps) {
         console.log(passwordVal);
         setPassword(passwordVal);
     }
-
+   
     let updateUser = async () => {
         
-        if (!username || !password || !firstname || !lastname || !email || isactive || role) {
-            setErrorMsg('You must fill out all forms!');
-            return;
-        }
+        // if (!userId || !username || !password || !firstname || !lastname || !email || !role) {
+        //     setErrorMsg('You must fill out all forms!');
+        //     return;
+        // }
 
         try {
 
@@ -133,7 +135,7 @@ function UpdatedUser(props: IUpdateProps) {
     }
 
     return (
-        props.updateUser ? <Navigate to="/dashboard"/> :
+        props.currentUser?.role !== '0' ? <Navigate to="/dashboard"/> :
         <div className='wrapper'>
             <div className='form-wrapper'>
                 
@@ -142,9 +144,9 @@ function UpdatedUser(props: IUpdateProps) {
                     <div>                   {/*when this change its handle @ line 35-38*/}
                             <input type="text" id="userId" placeholder="Enter the UserId" onChange={getSelection}/>
                             <br/><br/>
-                            <input type="text" id="firstName" placeholder="Enter the firstname" onChange={updateFirstame}/>
+                            <input type="text" id="firstname" placeholder="Enter the firstname" onChange={updateFirstame}/>
                             <br/><br/>
-                            <input type="text" id="lasttName" placeholder="Enter the lastname" onChange={updateLastname}/>
+                            <input type="text" id="lasttname" placeholder="Enter the lastname" onChange={updateLastname}/>
                             <br/><br/>
                             <input type="text" id="email" placeholder="Enter the email" onChange={updateEmail}/>
                             <br/><br/>
@@ -173,7 +175,7 @@ function UpdatedUser(props: IUpdateProps) {
 
 }
 
-export default UpdatedUser;
+export default UpdateAUser;
 
 
 // handleRegister(formValue: { firstname: string, lastname: string, username: string, email: string, password: string }) {
