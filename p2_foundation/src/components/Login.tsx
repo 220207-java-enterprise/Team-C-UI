@@ -60,37 +60,38 @@ function Login(props: ILoginProps) {
 
             let resp = await authenticate({username, password});
 
-            //Used to FETCH from locolhost
-            {/*let resp = await fetch('http://localhost:8080/quizzad',{
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({username, password})
-            }); */}
+            // //Used to FETCH from locolhost
+            // {/*let resp = await fetch('http://localhost:8080/quizzad',{
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //         'Accept': 'application/json'
+            //     },
+            //     body: JSON.stringify({username, password})
+            // }); */}
 
-            if (resp.status === 400) {
-                setErrorMsg('Invalid username or password provided!');
-            }
+            // if (resp.status === 400) {
+            //     setErrorMsg('Invalid username or password provided!');
+            // }
 
-            if (resp.status === 401) {
-                setErrorMsg('No user found with provided credentials!');
-            }
+            // if (resp.status === 401) {
+            //     setErrorMsg('No user found with provided credentials!');
+            // }
 
-            if (resp.status === 200) {
-                //let authUser = await resp.data;
-                let authUser = await resp.data;
-                console.log(authUser);
-                props.setCurrentUser(authUser);
-                if (authUser.role == 'Admin'){
-                    navigate('/updateuser');
-                }
-                // else{
-                //     navigate('/dashboard');
-                // }
-                
+            let authUser = await resp;
+            console.log(authUser);
+            props.setCurrentUser(authUser);
+            if (authUser.role == 'Admin'){
+                navigate('/updateuser');
             }
+            else if (authUser.role == 'Finance Manager'){
+                navigate('/managerdashboard');
+            }
+            else {
+                navigate('/dashboard');
+            }
+        
+            
             
             //EXPLICT(e:any) any not an implicit(e) any
         } catch (e: any) {
