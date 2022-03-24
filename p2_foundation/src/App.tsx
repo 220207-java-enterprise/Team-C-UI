@@ -7,6 +7,8 @@ import Login from './components/Login';
 import { Principal } from './models/principal';
 import { CreateUser } from './components/CreateUser';
 import { Reimbursement } from './models/reimbursement';
+import { User } from './models/user';
+import Register from './components/Register';
 
 
 //App component renders a login component and passes into  it authuser prop
@@ -16,6 +18,7 @@ function App() {
 
       //Generic- allows to take a Principal or undefined
   let [authUser, setAuthUser] = useState<Principal>();
+  let [newUser, setnewUser] = useState<User>();
   //These are ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ pieces of
   //state that is passed down as props.
 
@@ -26,6 +29,7 @@ function App() {
       <Route path="/dashboard" element={<Dashboard currentUser={authUser}/>}/>
       <Route path="/CreateUser" element={<CreateUser/>}/>
       <Route path="/Login" element={<Login currentUser={authUser} setCurrentUser={setAuthUser}/>}/>
+      <Route path="/Register" element={<Register registerUser={newUser} setRegisterUser={setnewUser}/>}/>
     </Routes>
   );
 };

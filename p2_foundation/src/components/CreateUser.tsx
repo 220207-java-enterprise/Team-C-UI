@@ -168,3 +168,37 @@ export class CreateUser extends React.Component<CreateUserProps, CreateUserState
     }
 
 }
+
+// handleRegister(formValue: { firstname: string, lastname: string, username: string, email: string, password: string }) {
+//     const { firstname, lastname, username, email, password } = formValue;
+//     this.setState({
+//       message: "",
+//       successful: false
+//     });
+//     AuthService.register(
+//         firstname,
+//         lastname,
+//       username,
+//       email,
+//       password
+//     ).then(
+//         (      response: { data: { message: any; }; }) => {
+//         this.setState({
+//           message: response.data.message,
+//           successful: true
+//         });
+//       },
+//         (      error: { response: { data: { message: any; }; }; message: any; toString: () => any; }) => {
+//         const resMessage =
+//           (error.response &&
+//             error.response.data &&
+//             error.response.data.message) ||
+//           error.message ||
+//           error.toString();
+//         this.setState({
+//           successful: false,
+//           message: resMessage
+//         });
+//       }
+//     );
+//   }
