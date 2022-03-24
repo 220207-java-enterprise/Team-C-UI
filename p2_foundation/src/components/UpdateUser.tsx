@@ -7,6 +7,7 @@ import './Style.css';
 import { User } from "../models/user";
 import React, { SyntheticEvent, useState } from "react";
 import { UpdateUser } from "../models/updateuser";
+import { Principal } from "../models/principal";
 
 //Props are peices of data that are passed into component as 
 //attributes from some component that is rendering that target
@@ -14,6 +15,7 @@ import { UpdateUser } from "../models/updateuser";
 interface IUpdateProps {
     updateUser: UpdateUser | undefined,
     setUpdateUser: (nextUpdateUser: UpdateUser | undefined) => void
+    currentUser : Principal | undefined;
 }
 
 {/*The only way a CHILD can communicate with parent is by props that passed UP into it,
@@ -134,7 +136,7 @@ function UpdatedUser(props: IUpdateProps) {
     }
 
     return (
-        props.updateUser ? <Navigate to="/dashboard"/> :
+        props.currentUser?.role!==  '0' ? <Navigate to="/login"/> :
         <div className='wrapper'>
             <div className='form-wrapper'>
                 

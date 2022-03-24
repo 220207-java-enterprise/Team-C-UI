@@ -95,7 +95,8 @@ function Login(props: ILoginProps) {
     }
 
     return (
-        props.currentUser ? <Navigate to="/dashboard"/> :
+        props.currentUser?.role==  '0' ? <Navigate to="/updateuser"/> : props.currentUser?.role==  '1' ? <Navigate to="/dashboard"/> : 
+        props.currentUser?.role==  '2' ? <Navigate to="/dashboard"/> :
         <div className='wrapper'>
             <div className='form-wrapper'>
                 
