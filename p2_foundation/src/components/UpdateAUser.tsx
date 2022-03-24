@@ -156,6 +156,18 @@ function UpdatedUser(props: IUpdateProps) {
                             <br/><br/>
                             <input type="text" id="userName" placeholder="Enter the username" onChange={updateUsername}/>
                             <br/><br/>
+
+
+                            <label htmlFor="isactive">Select is active: </label>
+                            <select id="isactive">
+                            <option value="">--Make a choice--</option>
+                            <option value="active">True</option>
+                            <option value="not active">False</option>
+                            </select>
+
+                            <p></p>
+
+
                             <input type="boolean" id="isactive" placeholder="Enter boolean is active" onChange={updateIsactive}/>
                             <br/><br/>
                             <input type="text" id="role" placeholder="Enter the role" onChange={updateRole}/>
