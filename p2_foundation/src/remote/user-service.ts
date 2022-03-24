@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 import { Principal } from "../models/principal";
 import { User } from "../models/user"
 import { appClient } from "./app-client"
 //register method
 export const register = async (newUser : {username: string, email: string, password: string | number , firstname: string, lastname: string}) => {
+=======
+import { User } from "../models/user"
+import { appClient } from "./app-client"
+//register method
+export const register = async (newUser : {username: string, email: string, password: string, firstname: string, lastname: string}) => {
+>>>>>>> 1ab6a0ea0320c55cfbee70bd164d0b0a3adfede0
     return await appClient.post<User>('/user', newUser, {
         headers: {
             'Content-Type': 'application/json',
