@@ -1,4 +1,5 @@
 import { Principal } from "../models/principal";
+import { UpdateUser } from "../models/updateuser";
 import { User } from "../models/user"
 import { appClient } from "./app-client"
 
@@ -13,7 +14,12 @@ export const register = async (newUser : {username: string, email: string, passw
 }
 
 
-export const updateUser = () => {
+export const Update = async (UpdateUser : {username: string, email: string, password: string, firstname: string, lastname: string, userId: string, isactive: string, role:string  }) => {
+    return await appClient.put<UpdateUser>('/user', UpdateUser, {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
     // TODO implement axios call to PUT/PATCH /users
 }
 
@@ -21,6 +27,6 @@ export const activateUser = (userId: string) => {
     // TODO implement axios call to PATCH /users, updating isActive
 }
 
-export const logout = (setCurrentUser: (nextUser: Principal | undefined) => void) => {
+export const logout = (setCurrentUser: (nextUser: User | undefined) => void) => {
     setCurrentUser(undefined);
 }

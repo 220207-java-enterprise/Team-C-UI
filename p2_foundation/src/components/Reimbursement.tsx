@@ -10,9 +10,15 @@ interface IReimbursementProps {
 
 function Reimbursement(props: IReimbursementProps) {
 
-    // This is not a piece of component state
-    // Changing its value will not force a re-render of the component
-    // let cards: Reimbursement[] = [];
+    let [id, setId] = useState('');
+    let [amount, setAmount] = useState('');
+    let [submitted, setSubmitted] = useState('');
+    let [resolved, setResolved] = useState('');
+    let [description, setDescription] = useState('');
+    let [paymentId, setPaymentId] = useState('');
+    let [statusId, setStatusId] = useState('');
+    let [typeId, setTypeId] = useState('');
+    
     const [reimbursement, updateReimbursement] = useState<any[]>([]);
 
     // a function that will fire off each time the component

@@ -70,7 +70,7 @@ function Register(props: IRegisterProps) {
         setPassword(passwordVal);
     }
 
-    let login = async () => {
+    let registerUser = async () => {
         
         if (!username || !password || !firstname || !lastname || !email) {
             setErrorMsg('You must provide a username, password, firstname, lastname and email!');
@@ -104,7 +104,7 @@ function Register(props: IRegisterProps) {
                 let newUser = await resp.data;
                 console.log(newUser);
                 props.setRegisterUser(newUser);
-                navigate('/dashboard');
+                navigate('/register');
             }
             
             //EXPLICT(e:any) any not an implicit(e) any
@@ -133,14 +133,14 @@ function Register(props: IRegisterProps) {
                             <br/><br/>
                             <input type="password" id="password" placeholder="Enter your password" onChange={updatePassword}/>
                             <br/><br/>
-                            <button id="login-button" onClick={login}>Login</button>
+                            <button id="login-button" onClick={registerUser}>Login</button>
                             <br/><br/>
 
                             
 
                             <div id='register-link'>
                                 <Link id='register' to ='/register'>
-                                    <button id="register" onClick={login}>Register</button>
+                                    <button id="register" onClick={registerUser}>Register</button>
                                 </Link>
                             </div>
                             
