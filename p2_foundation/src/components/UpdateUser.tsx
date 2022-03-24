@@ -1,7 +1,7 @@
 
 import { Link, useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-import { findUserAndUpdate } from "../remote/user-service";
+import { Update } from "../remote/user-service";
 import ErrorMessage from "./ErrorMessage";
 import './Style.css';
 import { User } from "../models/user";
@@ -26,9 +26,10 @@ function UpdatedUser(props: IUpdateProps) {
     let [firstname, setFirstame] = useState('');
     let [lastname, setLastname] = useState('');
     let [email, setEmail] = useState('');
-    let [isactive, setIsactive] = useState<boolean>();
+    let [isactive, setIsactive] = useState('');
+    //let [isactive, setIsactive] = useState<boolean>();
     let [role, setRole] = useState('');
-    const [password, setPassword] = useState<string | number>();
+    let [password, setPassword] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
     //These are ^^^ are pieces of state that are not passed down
     //to anything
@@ -63,10 +64,10 @@ function UpdatedUser(props: IUpdateProps) {
     }
 
                 //use arrow => function or function to do the same thing
-    let updateIsactive= function(e: SyntheticEvent) {
+    let updateIsactive= (e: SyntheticEvent) => {
         let isactiveVal = (e.target as HTMLInputElement).value;
         console.log(isactiveVal);
-        setIsactive(true);
+        setIsactive(isactiveVal);
     }
 
     let updateRole= function(e: SyntheticEvent) {
@@ -89,14 +90,14 @@ function UpdatedUser(props: IUpdateProps) {
 
     let updateUser = async () => {
         
-        if (!username || !password || !firstname || !lastname || !email || isactive || role) {
-            setErrorMsg('You must fill out all forms!');
-            return;
-        }
+        // if (!username || !password || !firstname || !lastname || !email || isactive || role) {
+        //     setErrorMsg('You must fill out all forms!');
+        //     return;
+        // }
 
         try {
 
-            let resp = await findUserAndUpdate(setUserId.toString());
+            let resp = await Update({username, email, password, lastname, firstname, isactive, role, userId });
 
             // //Used to FETCH from locolhost
             // let resp = await fetch('http://localhost:8080/p2_foundation',{
@@ -121,7 +122,7 @@ function UpdatedUser(props: IUpdateProps) {
                 let updatedUser = await resp.data;
                 console.log(updatedUser);
                 props.setUpdateUser(updatedUser);
-                navigate('/login');
+                navigate('/updateuser');
             }
             
             //EXPLICT(e:any) any not an implicit(e) any

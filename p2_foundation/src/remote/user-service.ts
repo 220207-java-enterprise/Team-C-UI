@@ -13,7 +13,7 @@ export const register = async (newUser : {username: string, email: string, passw
 }
 
 
-export const findUserAndUpdate = async (userId: string) => {
+export const Update = async (UpdateUser : {username: string, email: string, password: string, firstname: string, lastname: string, userId: string, isactive: string, role:string  }) => {
     return await appClient.put<UpdateUser>('/user', UpdateUser, {
         headers: {
             'Content-Type': 'application/json',
