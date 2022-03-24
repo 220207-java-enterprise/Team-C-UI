@@ -20,18 +20,18 @@ interface IUpdateProps {
 
 {/*The only way a CHILD can communicate with parent is by props that passed UP into it,
 that allow it call a function that is defined elsewhere. PARENT pass it DOWN */}
-function UpdateAUser(props: IUpdateProps) {
+function UpdatedUser(props: IUpdateProps) {
 
     // destructuring assignment
-    let [userId, setUserId] = useState('');
+    let [userid, setUserId] = useState('');
     let [username, setUsername] = useState('');
     let [firstname, setFirstame] = useState('');
     let [lastname, setLastname] = useState('');
     let [email, setEmail] = useState('');
-    let [isactive, setIsactive] = useState('');
+    let [isactive, setIsactive] = useState(false);
     let [role, setRole] = useState('');
-    let [password, setPassword] = useState<string | number>();
-    let [errorMsg, setErrorMsg] = useState('');
+    const [password, setPassword] = useState('');
+    const [errorMsg, setErrorMsg] = useState('');
     //These are ^^^ are pieces of state that are not passed down
     //to anything
 
@@ -68,7 +68,10 @@ function UpdateAUser(props: IUpdateProps) {
     let updateIsactive= function(e: SyntheticEvent) {
         let isactiveVal = (e.target as HTMLInputElement).value;
         console.log(isactiveVal);
-        setIsactive(isactiveVal);
+        if (isactiveVal == 'true' || isactiveVal == 't'){
+            setIsactive(true);
+        }
+        else { setIsactive(false); }
     }
 
     let updateRole= function(e: SyntheticEvent) {
@@ -88,17 +91,18 @@ function UpdateAUser(props: IUpdateProps) {
         console.log(passwordVal);
         setPassword(passwordVal);
     }
-   
+
     let updateUser = async () => {
         
-        // if (!userId || !username || !password || !firstname || !lastname || !email || !role) {
+        // if (!username || !password || !firstname || !lastname || !email || !isactive || !role) {
         //     setErrorMsg('You must fill out all forms!');
         //     return;
         // }
 
         try {
 
-            let resp = await findUserAndUpdate(setUserId.toString());
+            let resp = await findUserAndUpdate({userid, firstname, lastname, email, username, password, isactive,
+                role});
 
             // //Used to FETCH from locolhost
             // let resp = await fetch('http://localhost:8080/p2_foundation',{
@@ -135,18 +139,18 @@ function UpdateAUser(props: IUpdateProps) {
     }
 
     return (
-        props.currentUser?.role !== '0' ? <Navigate to="/dashboard"/> :
+        // props.updateUser ? <Navigate to="/dashboard"/> :
         <div className='wrapper'>
             <div className='form-wrapper'>
                 
                 <>
-                        <h4>Log into your account</h4>
+                        <h4>Update a User</h4>
                     <div>                   {/*when this change its handle @ line 35-38*/}
-                            <input type="text" id="userId" placeholder="Enter the UserId" onChange={getSelection}/>
+                            <input type="text" id="userId" placeholder="Enter the UserId" onChange={updateUserId}/>
                             <br/><br/>
-                            <input type="text" id="firstname" placeholder="Enter the firstname" onChange={updateFirstame}/>
+                            <input type="text" id="firstName" placeholder="Enter the firstname" onChange={updateFirstame}/>
                             <br/><br/>
-                            <input type="text" id="lasttname" placeholder="Enter the lastname" onChange={updateLastname}/>
+                            <input type="text" id="lasttName" placeholder="Enter the lastname" onChange={updateLastname}/>
                             <br/><br/>
                             <input type="text" id="email" placeholder="Enter the email" onChange={updateEmail}/>
                             <br/><br/>
@@ -175,7 +179,7 @@ function UpdateAUser(props: IUpdateProps) {
 
 }
 
-export default UpdateAUser;
+export default UpdatedUser;
 
 
 // handleRegister(formValue: { firstname: string, lastname: string, username: string, email: string, password: string }) {

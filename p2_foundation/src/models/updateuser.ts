@@ -1,5 +1,6 @@
 export class UpdateUser {
 
+    userid: string;
     firstname: string;
     lastname: string;
     email: string;
@@ -8,9 +9,10 @@ export class UpdateUser {
     isactive: boolean;
     role: String;
 
-    constructor(firstname: string, lastname: string, email: string, username: string, password: string, isactive: boolean,
+    constructor(userid: string, firstname: string, lastname: string, email: string, username: string, password: string, isactive: boolean,
         role: string) {
-  
+            
+        this.userid = userid;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;

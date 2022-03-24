@@ -1,4 +1,6 @@
 
+import UpdatedUser from "../components/UpdateAUser";
+import { Principal } from "../models/principal";
 import { UpdateUser } from "../models/updateuser";
 import { User } from "../models/user"
 import { appClient } from "./app-client"
@@ -13,11 +15,14 @@ export const register = async (newUser : {username: string, email: string, passw
 }
 
 
-export const findUserAndUpdate = async (userId: string) => {
-    return await appClient.put<UpdateUser>('/user', UpdateUser, {
+export const findUserAndUpdate = async (updateUser : {userid: string, firstname: string, lastname: string, email: string, username: string,
+    password: string, isactive: boolean, role: string}) => {
+    return await appClient.put<UpdateUser>('/user', updateUser, {
         headers: {
             'Content-Type': 'application/json',
         }
+        
+        
     });
     // TODO implement axios call to PUT/PATCH /users
 }
