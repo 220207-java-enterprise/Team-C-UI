@@ -1,6 +1,7 @@
 import { Principal } from "../models/principal";
 import { User } from "../models/user"
 import { appClient } from "./app-client"
+
 //register method
 export const register = async (newUser : {username: string, email: string, password: string | number , firstname: string, lastname: string}) => {
     return await appClient.post<User>('/user', newUser, {

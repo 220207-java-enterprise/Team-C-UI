@@ -159,3 +159,38 @@ function Register(props: IRegisterProps) {
 }
 
 export default Register;
+
+
+// //control the user inputs in our username, email and password fields &
+//     //store the changes we make to the input fields on change
+//     handleChange = (event : any) => 
+//     {
+//         event.preventDefault();
+//         const { name, value } = event.target;
+//         let errors = this.state.errors;
+//         switch (name) 
+//         {
+//             case 'username':
+//                 console.log ("username is less than 8 char" + value.length)
+//                 //errors.username = value.length < 5 ? 'Username must be 5 characters long!': '';
+//                 errors.username = RegexUsername.test(value)? '': 'Username must be 8 characters, include one Number, and Upper and Lower case letters !';
+//                 break;
+
+//             case 'email':
+//                 errors.email = RegexEmail.test(value)? '': 'Email is not valid!';
+//                 break;
+
+//             case 'password':
+            
+//                 console.log ("password is less than 8 char" + value.length)
+//                 //errors.password = value.length < 8 ? 'Password must be eight characters long!': '';
+//                 errors.password = RegexPassword.test(value) ? '': 'Password must have  eight characters, special character, Upper and Lower case letters';
+//                 break;
+            
+//             default:
+//                 break;
+//         }
+
+//         this.setState(Object.assign(this.state, { errors,[name]: value }));
+//         console.log(this.state.errors);
+//     }
