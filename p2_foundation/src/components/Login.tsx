@@ -5,6 +5,7 @@ import { Principal } from "../models/principal";
 import { authenticate } from "../remote/auth-service";
 import ErrorMessage from "./ErrorMessage";
 import './Style.css';
+import { UpdateUser } from "../models/updateuser";
 
 
 //Props are peices of data that are passed into component as 
