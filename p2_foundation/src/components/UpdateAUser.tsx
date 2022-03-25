@@ -29,7 +29,7 @@ function UpdatedUser(props: IUpdateProps) {
     let [firstName, setFirstame] = useState('');
     let [lastName, setLastname] = useState('');
     let [email, setEmail] = useState('');
-    let [isActive, setIsActive] = useState<Boolean>(true);
+    let [isActive, setIsActive] = useState<boolean>(true);
     let [roleId, setRole] = useState({id : '2', rolename : "Employee"});
     const [password, setPassword] = useState('');
     const [errorMsg, setErrorMsg] = useState('');

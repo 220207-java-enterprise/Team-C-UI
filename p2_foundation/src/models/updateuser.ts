@@ -6,10 +6,10 @@ export class UpdateUser {
     email: string;
     username: string;
     password: string; 
-    isactive: Boolean;
+    isactive: boolean;
     role: String;
 
-    constructor(userId: string, firstname: string, lastname: string, email: string, username: string, password: string, isactive: Boolean,
+    constructor(userId: string, firstname: string, lastname: string, email: string, username: string, password: string, isactive: boolean,
         role: string) {
             
         this.userId = userId;

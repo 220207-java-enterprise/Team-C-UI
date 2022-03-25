@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let AUTH_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxIiwiaXNzIjoicDJfZm91bmRhdGlvbiIsImlhdCI6MTY0ODE3OTMyMywiZXhwIjoxNjQ4MTgyOTIzLCJzdWIiOiJBc2FlbnoxMjMiLCJyb2xlIjoiQWRtaW4ifQ.ZpcKBNfTHK4wTl0ncF3XajWjHCz0q2Yx10TSHTsoqX4';
+let AUTH_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxIiwiaXNzIjoicDJfZm91bmRhdGlvbiIsImlhdCI6MTY0ODIxNzM5NCwiZXhwIjoxNjQ4MjIwOTk0LCJzdWIiOiJBc2FlbnoxMjMiLCJyb2xlIjoiQWRtaW4ifQ.hKj6YUJhnaKNVltUIm2TKxWMOBgOws6FFDg4NZ4uUrg';
 axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 //Create a base configuration
