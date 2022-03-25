@@ -14,15 +14,15 @@ interface IReimbursementProps {
 function CreateReimbursement(props: IReimbursementProps) {
 
     let [id, setId] = useState('');
-    let [amount, setAmount] = useState('');
+    let [amount, setAmount] = useState(Number);
     let [submitted, setSubmitted] = useState('');
     let [resolved, setResolved] = useState('');
     let [description, setDescription] = useState('');
     let [paymentId, setPaymentId] = useState('');
-    let [authorId, setAuthorId] = useState('');
-    let [resolverId, setResolverId] = useState('');
-    let [statusId, setStatusId] = useState('');
-    let [typeId, setTypeId] = useState('');
+    let [author_Id, setAuthorId] = useState('');
+    let [resolver_Id, setResolverId] = useState('');
+    let [status_Id, setStatusId] = useState('');
+    let [type_Id, setTypeId] = useState('');
 
     const [errorMsg, setErrorMsg] = useState('');
     const navigate = useNavigate();
@@ -39,7 +39,7 @@ function CreateReimbursement(props: IReimbursementProps) {
         let amountVal = (e.target as HTMLInputElement).value;
         console.log(amountVal);
         // username = usernameVal; // YOU CANNOT UPDATE PIECES OF STATE LIKE THIS
-        setAmount(amountVal);// Use setters to hold password or username
+        setAmount(parseInt(amountVal));// Use setters to hold password or username
     }
 
     let updateSubmitted = (e: SyntheticEvent) => {
@@ -108,8 +108,8 @@ function CreateReimbursement(props: IReimbursementProps) {
     
         try {
                 
-            let resp = await createReimbursement({id, amount, submitted, resolved, description, paymentId, authorId, 
-                resolverId, statusId, typeId});
+            let resp = await createReimbursement({id, amount, submitted, resolved, description, author_Id, 
+                resolver_Id, status_Id, type_Id});
 
             // //Used to FETCH from locolhost
             // let resp = await fetch('http://localhost:8080/p2_foundation',{

@@ -1,5 +1,6 @@
 import { SyntheticEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { isDate } from "util/types";
 import { Principal } from "../models/principal";
 import { Reimbursement } from "../models/reimbursement";
 import { makeReimbursement } from "../remote/reimbursement-service";
@@ -19,15 +20,15 @@ interface IUpdateProps {
 function UpdatedReimbursement(props: IUpdateProps) {
 
     let [id, setId] = useState('');
-    let [amount, setAmount] = useState('');
+    let [amount, setAmount] = useState(Number);
     let [submitted, setSubmitted] = useState('');
-    let [resolved, setResolved] = useState(Date);
+    let [resolved, setResolved] = useState('');
     let [description, setDescription] = useState('');
-    let [paymentId, setPaymentId] = useState('');
-    let [authorId, setAuthorId] = useState('');
-    let [resolverId, setResolverId] = useState('');
-    let [statusId, setStatusId] = useState('');
-    let [typeId, setTypeId] = useState('');
+    // let [payment_Id, setPaymentId] = useState('');
+    let [author_Id, setAuthorId] = useState('');
+    let [resolver_Id, setResolverId] = useState('');
+    let [status_Id, setStatusId] = useState('');
+    let [type_Id, setTypeId] = useState('');
 
 
     const [errorMsg, setErrorMsg] = useState('');
@@ -47,7 +48,7 @@ function UpdatedReimbursement(props: IUpdateProps) {
         let amountVal = (e.target as HTMLInputElement).value;
         console.log(amountVal);
         // username = usernameVal; // YOU CANNOT UPDATE PIECES OF STATE LIKE THIS
-        setAmount(amountVal);// Use setters to hold password or username
+        setAmount(parseInt(amountVal, 10));// Use setters to hold password or username
     }
 
     let updateSubmitted = (e: SyntheticEvent) => {
@@ -60,7 +61,8 @@ function UpdatedReimbursement(props: IUpdateProps) {
     let updateResolved = (e: SyntheticEvent) => {
         let resolvedVal = (e.target as HTMLInputElement).value;
         console.log(resolvedVal);
-        setResolved(resolvedVal);// Use setters to hold password or username
+        setResolved(resolvedVal);
+        // setResolved(resolvedVal);// Use setters to hold password or username
         
     }
 
@@ -70,14 +72,14 @@ function UpdatedReimbursement(props: IUpdateProps) {
         setDescription(descriptionVal);// Use setters to hold password or username
     }
 
-                 //use arrow => function or function to do the same thing
-                //SyntheticEvent Reacts wrapper around a regular old dom event
-    let updatePaymentId = (e: SyntheticEvent) => {
-        let paymentIdVal = (e.target as HTMLInputElement).value;
-        console.log(paymentIdVal);
-        // username = usernameVal; // YOU CANNOT UPDATE PIECES OF STATE LIKE THIS
-        setPaymentId(paymentIdVal);// Use setters to hold password or username
-    }
+    //              //use arrow => function or function to do the same thing
+    //             //SyntheticEvent Reacts wrapper around a regular old dom event
+    // let updatePaymentId = (e: SyntheticEvent) => {
+    //     let paymentIdVal = (e.target as HTMLInputElement).value;
+    //     console.log(paymentIdVal);
+    //     // username = usernameVal; // YOU CANNOT UPDATE PIECES OF STATE LIKE THIS
+    //     setPaymentId(paymentIdVal);// Use setters to hold password or username
+    // }
 
     let updateAuthorId = (e: SyntheticEvent) => {
         let AuthorIdVal = (e.target as HTMLInputElement).value;
@@ -116,8 +118,8 @@ function UpdatedReimbursement(props: IUpdateProps) {
     
         try {
                 
-            let resp = await makeReimbursement({id, amount, submitted, resolved, description, paymentId, authorId, 
-                resolverId, statusId, typeId});
+            let resp = await makeReimbursement({id, amount, submitted, resolved, description, author_Id, 
+                resolver_Id, status_Id, type_Id});
 
             // //Used to FETCH from locolhost
             // let resp = await fetch('http://localhost:8080/p2_foundation',{
@@ -175,8 +177,8 @@ function UpdatedReimbursement(props: IUpdateProps) {
                             <br/><br/>
                             <input type="text" id="description" placeholder="Enter the description" onChange={updateDescription}/>
                             <br/><br/>
-                            <input type="text" id="paymentId" placeholder="Enter payment Id" onChange={updatePaymentId}/>
-                            <br/><br/>
+ 
+ 
                             <input type="text" id="authorId" placeholder="Enter author Id" onChange={updateAuthorId}/>
                             <br/><br/>
                             <input type="password" id="resolverId" placeholder="Enter resolver Id" onChange={updateResolverId}/>
