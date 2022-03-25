@@ -10,6 +10,7 @@ import Register from './components/Register';
 import UpdateAUser from './components/UpdateAUser';
 import { Reimbursement } from './models/reimbursement';
 import UpdatedReimbursement from './components/UpdateReimbursement';
+import CreateReimbursement from './components/CreateReimbursement';
 
 
 //App component renders a login component and passes into  it authuser prop
@@ -22,6 +23,7 @@ function App() {
   let [newUser, setnewUser] = useState<User>();
   let [updateUser, setUpdateUser] = useState<UpdateUser>();
   let [updateReimbursment, setUpdateReimbursement] = useState<Reimbursement>();
+  let [createReimbursment, setNewReimbursement] = useState<Reimbursement>();
 
   //These are ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ pieces of
   //state that is passed down as props.
@@ -35,6 +37,7 @@ function App() {
       <Route path="/Login" element={<Login currentUser={authUser} setCurrentUser={setAuthUser}/>}/>
       <Route path="/Register" element={<Register registerUser={newUser} setRegisterUser={setnewUser}/>}/>
       <Route path="/UpdateReimbursement" element={<UpdatedReimbursement updateReimbursment={updateReimbursment} setUpdateReimbursement={setUpdateReimbursement} currentUser={undefined}/>}/>
+      <Route path="/CeateReimbursement" element={<CreateReimbursement createReimbursement={updateReimbursment} setCreateReimbursement={setUpdateReimbursement} currentUser={undefined}/>}/>
     </Routes>
   );
 };
