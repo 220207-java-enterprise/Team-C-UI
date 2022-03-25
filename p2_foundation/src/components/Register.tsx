@@ -104,7 +104,7 @@ function Register(props: IRegisterProps) {
                 let newUser = await resp.data;
                 console.log(newUser);
                 props.setRegisterUser(newUser);
-                navigate('/register');
+                navigate('/login');
             }
             
             //EXPLICT(e:any) any not an implicit(e) any
@@ -116,12 +116,12 @@ function Register(props: IRegisterProps) {
     }
 
     return (
-        props.registerUser ? <Navigate to="/dashboard"/> :
+        props.registerUser ? <Navigate to="/login"/> :
         <div className='wrapper'>
             <div className='form-wrapper'>
                 
                 <>
-                        <h4>Log into your account</h4>
+                        <h4>Register a New User</h4>
                     <div>                   {/*when this change its handle @ line 35-38*/}
                             <input type="text" id="firstName" placeholder="Enter your firstname" onChange={updateFirstame}/>
                             <br/><br/>

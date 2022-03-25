@@ -8,6 +8,7 @@ import { User } from "../models/user";
 import React, { SyntheticEvent, useState } from "react";
 import { UpdateUser } from "../models/updateuser";
 import { Principal } from "../models/principal";
+import { UserRole } from "../models/userrole";
 
 //Props are peices of data that are passed into component as 
 //attributes from some component that is rendering that target
@@ -23,13 +24,13 @@ that allow it call a function that is defined elsewhere. PARENT pass it DOWN */}
 function UpdatedUser(props: IUpdateProps) {
 
     // destructuring assignment
-    let [userid, setUserId] = useState('');
-    let [username, setUsername] = useState('');
-    let [firstname, setFirstame] = useState('');
-    let [lastname, setLastname] = useState('');
+    let [userId, setUserId] = useState('');
+    let [userName, setUsername] = useState('');
+    let [firstName, setFirstame] = useState('');
+    let [lastName, setLastname] = useState('');
     let [email, setEmail] = useState('');
-    let [isactive, setIsactive] = useState(false);
-    let [role, setRole] = useState('');
+    let [isActive, setIsactive] = React.useState(false);
+    let [roleId, setRole] = useState({id : '2', rolename : "Employee"});
     const [password, setPassword] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
     //These are ^^^ are pieces of state that are not passed down
@@ -68,7 +69,7 @@ function UpdatedUser(props: IUpdateProps) {
     let updateIsactive= function(e: SyntheticEvent) {
         let isactiveVal = (e.target as HTMLInputElement).value;
         console.log(isactiveVal);
-        if (isactiveVal == 'True'){
+        if (isactiveVal){
             setIsactive(true);
         }
         else { setIsactive(false); }
@@ -77,7 +78,15 @@ function UpdatedUser(props: IUpdateProps) {
     let updateRole= function(e: SyntheticEvent) {
         let roleVal = (e.target as HTMLInputElement).value;
         console.log(roleVal);
-        setRole(roleVal);
+        if (roleVal == '0'){
+            setRole({id : '0', rolename : 'Admin'})
+        }
+        if (roleVal == '1'){
+            setRole({id : '1', rolename : 'Financial Manager'})
+        }
+        if (roleVal == '2'){
+            setRole({id : '2', rolename : 'Employee'})
+        }
     }
 
     let updateEmail= function(e: SyntheticEvent) {
@@ -101,8 +110,8 @@ function UpdatedUser(props: IUpdateProps) {
     
         try {
                 
-            let resp = await findUserAndUpdate({userid, firstname, lastname, email, username, password, isactive,
-                role});
+            let resp = await findUserAndUpdate({userId, firstName, lastName, email, userName, password, isActive,
+                roleId});
 
             // //Used to FETCH from locolhost
             // let resp = await fetch('http://localhost:8080/p2_foundation',{
@@ -158,6 +167,7 @@ function UpdatedUser(props: IUpdateProps) {
                             <input type="text" id="userName" placeholder="Enter the username" onChange={updateUsername}/>
                             <br/><br/>
 
+<<<<<<< HEAD
 
                             <label htmlFor="isactive">Select is active: </label>
                             <select id="isactive">
@@ -167,6 +177,17 @@ function UpdatedUser(props: IUpdateProps) {
                             </select>
 
                             <p></p>
+=======
+                            <br/><br/>
+                            <input type="text" id="isActive" placeholder="Enter the True or False" onChange={updateIsactive}/>
+                            <br/><br/>
+                            {/* <label htmlFor="isActive">Select is active: </label>
+                            <select id="isactive" onChange={updateIsactive}>
+                            <option value="active">True</option>
+                            <option value="not active">False</option>
+                            </select>
+                            <p></p> */}
+>>>>>>> e00069864a168b5bd8acba05c403e2b2398d579f
 
 
                             <input type="boolean" id="isactive" placeholder="Enter boolean is active" onChange={updateIsactive}/>
