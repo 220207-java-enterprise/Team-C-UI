@@ -85,7 +85,7 @@ function Login(props: ILoginProps) {
                 navigate('/updateuser');
             }
             else if (authUser.role == 'Finance Manager'){
-                navigate('/CreateReimbursement');
+                navigate('/updatereimbursement');
             }
             else {
                 navigate('/dashboard');
@@ -123,11 +123,11 @@ function Login(props: ILoginProps) {
                             </div>
                             {/* ------------------- */}
 
-                            <div id='UpdateReimbursement-link'>
-                                <Link id='UpdateReimbursement' to ='/UpdateReimbursement'>
-                                    <button id="register" onClick={login}>UpdateReimbursement</button>
+                            {/* <div id='CreateReimbursement-link'>
+                                <Link id='CreateReimbursement' to ='/CreateReimbursement'>
+                                    <button id="update" onClick={login}>CreateReimbursement</button>
                                 </Link>
-                            </div>
+                            </div> */}
                             
                         </div>
 

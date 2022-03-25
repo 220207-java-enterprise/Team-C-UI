@@ -37,7 +37,7 @@ function App() {
       <Route path="/Login" element={<Login currentUser={authUser} setCurrentUser={setAuthUser}/>}/>
       <Route path="/Register" element={<Register registerUser={newUser} setRegisterUser={setnewUser}/>}/>
       <Route path="/UpdateReimbursement" element={<UpdatedReimbursement updateReimbursment={updateReimbursment} setUpdateReimbursement={setUpdateReimbursement} currentUser={undefined}/>}/>
-      <Route path="/CeateReimbursement" element={<CreateReimbursement createReimbursement={updateReimbursment} setCreateReimbursement={setUpdateReimbursement} currentUser={undefined}/>}/>
+      <Route path="/CreateReimbursement" element={<CreateReimbursement createReimbursement={createReimbursment} setCreateReimbursement={setNewReimbursement} currentUser={undefined}/>}/>
     </Routes>
   );
 };

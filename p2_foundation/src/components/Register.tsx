@@ -133,8 +133,14 @@ function Register(props: IRegisterProps) {
                             <br/><br/>
                             <input type="password" id="password" placeholder="Enter your password" onChange={updatePassword}/>
                             <br/><br/>
+                            
+
+                            <div id='login-link'>
+                                <Link id='login' to ='/login'>
                             <button id="login-button" onClick={registerUser}>Login</button>
-                            <br/><br/>
+                            
+                            </Link>
+                            </div>
 
                             
 

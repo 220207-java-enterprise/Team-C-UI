@@ -1,5 +1,5 @@
 import { SyntheticEvent, useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Reimbursement } from "../models/reimbursement";
 import { Principal } from "../models/principal";
 import { createReimbursement, getAllReimbursement } from "../remote/reimbursement-service";
@@ -152,14 +152,12 @@ function CreateReimbursement(props: IReimbursementProps) {
             <div className='form-wrapper'>
                 
                 <>
-                        <h4>Update reimbursement</h4>
+                        <h4>Create Reimbursement</h4>
                         <div>                   {/*when this change its handle @ line 35-38*/}
                             <input type="text" id="id" placeholder="Enter the id" onChange={updateId}/>
                             <br/><br/>
                             <input type="text" id="amount" placeholder="Enter the amount" onChange={updateAmount}/>
                             <br/><br/>
-                            
-
                             
                             <input type="text" id="submitted" placeholder="Time submitted" onChange={updateSubmitted}/>
                             <br/><br/>
@@ -179,6 +177,12 @@ function CreateReimbursement(props: IReimbursementProps) {
                             <br/><br/>
                             <button id="new-button" onClick={newReimbursment}>Update</button>
                             <br/><br/>
+
+                            <div id='login-link'>
+                                <Link id='login' to ='/login'>
+                                    <button id="login-button" onClick={newReimbursment}>Login</button>
+                                </Link>
+                            </div>
                             
                         </div>
 
