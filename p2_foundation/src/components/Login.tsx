@@ -85,7 +85,7 @@ function Login(props: ILoginProps) {
                 navigate('/updateuser');
             }
             else if (authUser.role == 'Finance Manager'){
-                navigate('/CreateReimbursement');
+                navigate('/UpdateReimbursement');
             }
             else {
                 navigate('/dashboard');
