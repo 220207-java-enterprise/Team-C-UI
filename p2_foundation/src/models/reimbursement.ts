@@ -1,11 +1,12 @@
+import { UpdateUser } from "./updateuser";
 import { User as string } from "./user";
 
 export class Reimbursement {
 
     id: string;
-    amount: string;
+    amount:  number;
     submitted: string;
-    resolved: Boolean;
+    resolved: string;
     description: string;
     paymentId: string;
     authorId: string;
@@ -15,7 +16,7 @@ export class Reimbursement {
 
     
 
-    constructor(id: string, amount: string, submitted: string, resolved: Boolean, description: string, paymentId: string, authorId: string, 
+    constructor(id: string, amount: number, submitted: string, resolved: string, description: string, paymentId: string, authorId: string, 
         resolverId: string, statusId: string, typeId: string
         //category: {id: string, categoryName: string}
         ) {

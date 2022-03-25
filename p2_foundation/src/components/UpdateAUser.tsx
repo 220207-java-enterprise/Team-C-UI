@@ -68,7 +68,7 @@ function UpdatedUser(props: IUpdateProps) {
     let updateIsactive= function(e: SyntheticEvent) {
         let isactiveVal = (e.target as HTMLInputElement).value;
         console.log(isactiveVal);
-        if (isactiveVal == 'true' || isactiveVal == 't'){
+        if (isactiveVal == 'True'){
             setIsactive(true);
         }
         else { setIsactive(false); }
@@ -98,9 +98,9 @@ function UpdatedUser(props: IUpdateProps) {
         //     setErrorMsg('You must fill out all forms!');
         //     return;
         // }
-
+    
         try {
-
+                
             let resp = await findUserAndUpdate({userid, firstname, lastname, email, username, password, isactive,
                 role});
 
@@ -135,6 +135,7 @@ function UpdatedUser(props: IUpdateProps) {
             {/*used for giving any wierd errors(API not running, wont give response at all)*/}
             console.log(e.message);
         }
+    
 
     }
 
@@ -185,8 +186,8 @@ function UpdatedUser(props: IUpdateProps) {
                         so it can properly render it to the screen*/}
                         { errorMsg ? <ErrorMessage errorMessage={errorMsg}/> : <></> }
                 </>
-                </div>
-                </div>
+            </div>
+        </div>
     );
 
 }
