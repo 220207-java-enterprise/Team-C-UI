@@ -29,7 +29,7 @@ function UpdatedUser(props: IUpdateProps) {
     let [firstName, setFirstame] = useState('');
     let [lastName, setLastname] = useState('');
     let [email, setEmail] = useState('');
-    let [isActive, setIsactive] = React.useState(false);
+    let [isActive, setIsActive] = useState<Boolean>(true);
     let [roleId, setRole] = useState({id : '2', rolename : "Employee"});
     const [password, setPassword] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
@@ -66,13 +66,18 @@ function UpdatedUser(props: IUpdateProps) {
     }
 
                 //use arrow => function or function to do the same thing
-    let updateIsactive= function(e: SyntheticEvent) {
+    let updateIsActive= function(e: SyntheticEvent) {
         let isactiveVal = (e.target as HTMLInputElement).value;
         console.log(isactiveVal);
         if (isactiveVal){
-            setIsactive(true);
+            setIsActive(true);
+            isActive = true;
+            console.log(isActive);
         }
-        else { setIsactive(false); }
+        else { 
+            setIsActive(false);
+            isActive = false;
+        }
     }
 
     let updateRole= function(e: SyntheticEvent) {
@@ -167,31 +172,17 @@ function UpdatedUser(props: IUpdateProps) {
                             <input type="text" id="userName" placeholder="Enter the username" onChange={updateUsername}/>
                             <br/><br/>
 
-<<<<<<< HEAD
-
-                            <label htmlFor="isactive">Select is active: </label>
-                            <select id="isactive">
-                            <option value="">--Make a choice--</option>
+                            {/* <br/><br/>
+                            <input type="text" id="isActive" placeholder="Enter the True or False" onChange={updateIsActive}/>
+                            <br/><br/> */}
+                            
+                            <label htmlFor="isActive">Select is active: </label>
+                            <select id="isactive" onClick={updateIsActive}>
                             <option value="active">True</option>
                             <option value="not active">False</option>
                             </select>
+                            
 
-                            <p></p>
-=======
-                            <br/><br/>
-                            <input type="text" id="isActive" placeholder="Enter the True or False" onChange={updateIsactive}/>
-                            <br/><br/>
-                            {/* <label htmlFor="isActive">Select is active: </label>
-                            <select id="isactive" onChange={updateIsactive}>
-                            <option value="active">True</option>
-                            <option value="not active">False</option>
-                            </select>
-                            <p></p> */}
->>>>>>> e00069864a168b5bd8acba05c403e2b2398d579f
-
-
-                            <input type="boolean" id="isactive" placeholder="Enter boolean is active" onChange={updateIsactive}/>
-                            <br/><br/>
                             <input type="text" id="role" placeholder="Enter the role" onChange={updateRole}/>
                             <br/><br/>
                             <input type="password" id="password" placeholder="Enter the password" onChange={updatePassword}/>
