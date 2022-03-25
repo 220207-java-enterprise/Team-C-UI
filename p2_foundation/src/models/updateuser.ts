@@ -1,17 +1,19 @@
 export class UpdateUser {
 
     //userId: string;
+    userid: string;
     firstname: string;
     lastname: string;
     email: string;
     username: string;
     password: string; 
-    isactive: string;
-    role: String;
+    isactive: boolean;
+    role: string;
 
-    constructor(firstname: string, lastname: string, email: string, username: string, password: string, isactive: string,
+    constructor(userid: string, firstname: string, lastname: string, email: string, username: string, password: string, isactive: boolean,
         role: string) {
-  
+            
+        this.userid = userid;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;

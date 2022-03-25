@@ -5,7 +5,6 @@ import { Principal } from "../models/principal";
 import { authenticate } from "../remote/auth-service";
 import ErrorMessage from "./ErrorMessage";
 import './Style.css';
-import { UpdateUser } from "../models/updateuser";
 
 
 //Props are peices of data that are passed into component as 
@@ -84,7 +83,13 @@ function Login(props: ILoginProps) {
                 let authUser = await resp.data;
                 console.log(authUser);
                 props.setCurrentUser(authUser);
-                navigate('/dashboard');
+                if (authUser.role === 'Admin'){
+                    navigate('/dashboard');
+                }
+                // else{
+                //     navigate('/dashboard');
+                // }
+                
             }
             
             //EXPLICT(e:any) any not an implicit(e) any
@@ -96,7 +101,7 @@ function Login(props: ILoginProps) {
     }
 
     return (
-        props.currentUser?.role==  '0' ? <Navigate to="/updateuser"/> : 
+        props.currentUser?.role==  '0' ? <Navigate to="/dashboard"/> : 
         <div className='wrapper'>
             <div className='form-wrapper'>
                 

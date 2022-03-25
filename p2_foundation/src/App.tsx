@@ -30,7 +30,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Dashboard currentUser={undefined}/>}/>
       <Route path="/dashboard" element={<Dashboard currentUser={authUser}/>}/>
-      <Route path="/UpdateUser" element={<UpdatedUser updateUser={updateUser} setUpdateUser={setUpdateUser} currentUser={authUser}/>}/>
+      <Route path="/UpdateUser" element={<UpdateAUser updateUser={updateUser} setUpdateUser={setUpdateUser} currentUser={authUser}/>}/>
       <Route path="/Login" element={<Login currentUser={authUser} setCurrentUser={setAuthUser}/>}/>
       <Route path="/Register" element={<Register registerUser={newUser} setRegisterUser={setnewUser}/>}/>
     </Routes>

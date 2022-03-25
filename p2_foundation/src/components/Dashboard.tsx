@@ -31,7 +31,7 @@ function Dashboard(props: IDashboardProps) {
             <h1>Welcome, {props.currentUser.username}!</h1>
             {reimbursement.map((reimbursement, idx) => {
                 return (
-                    <div key={idx}>
+                    <><div key={idx}>
                         <h4>Reimbursement Id: {reimbursement.id}</h4>
                         <h5>Amount: {reimbursement.amount}</h5>
                         <h5>Submitted: {reimbursement.submitted}</h5>
@@ -43,8 +43,25 @@ function Dashboard(props: IDashboardProps) {
                         <h5>StatusId: {reimbursement.statusId}</h5>
                         <h5>TypeId: {reimbursement.typeId}</h5>
                         {/*<h5>Category: {reimbursement.category.categoryName}</h5>*/}
-                        <hr/>
-                    </div>
+                        <hr />
+                    </div><h4>Register your account</h4><div>                   {/*when this change its handle @ line 35-38*/}
+                            <input type="text" id="firstName" placeholder="Enter your firstname"  />
+                            <br /><br />
+                            <input type="text" id="lasttName" placeholder="Enter your lastname"  />
+                            <br /><br />
+                            <input type="text" id="email" placeholder="Enter your email"  />
+                            <br /><br />
+                            <input type="text" id="userName" placeholder="Enter your username"  />
+                            <br /><br />
+                            <input type="password" id="password" placeholder="Enter your password"  />
+                            <br /><br />
+                            
+
+
+
+                            
+
+                        </div></>
                     
                 )
             })}

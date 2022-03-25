@@ -13,9 +13,10 @@ import { Principal } from "../models/principal";
 //attributes from some component that is rendering that target
 //component
 interface IUpdateProps {
+    currentUser: Principal | undefined,
     updateUser: UpdateUser | undefined,
     setUpdateUser: (nextUpdateUser: UpdateUser | undefined) => void
-    currentUser : Principal | undefined;
+    
 }
 
 {/*The only way a CHILD can communicate with parent is by props that passed UP into it,
@@ -23,15 +24,14 @@ that allow it call a function that is defined elsewhere. PARENT pass it DOWN */}
 function UpdatedUser(props: IUpdateProps) {
 
     // destructuring assignment
-    let [userId, setUserId] = useState('');
+    let [userid, setUserId] = useState('');
     let [username, setUsername] = useState('');
     let [firstname, setFirstame] = useState('');
     let [lastname, setLastname] = useState('');
     let [email, setEmail] = useState('');
-    let [isactive, setIsactive] = useState('');
-    //let [isactive, setIsactive] = useState<boolean>();
+    let [isactive, setIsactive] = useState(false);
     let [role, setRole] = useState('');
-    let [password, setPassword] = useState('');
+    const [password, setPassword] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
     //These are ^^^ are pieces of state that are not passed down
     //to anything
@@ -69,7 +69,10 @@ function UpdatedUser(props: IUpdateProps) {
     let updateIsactive= (e: SyntheticEvent) => {
         let isactiveVal = (e.target as HTMLInputElement).value;
         console.log(isactiveVal);
-        setIsactive(isactiveVal);
+        if (isactiveVal == 'true' ){
+            setIsactive(true);
+        }
+        else { setIsactive(false); }
     }
 
     let updateRole= function(e: SyntheticEvent) {
@@ -99,7 +102,7 @@ function UpdatedUser(props: IUpdateProps) {
 
         try {
 
-            let resp = await Update({username, email, password, lastname, firstname, isactive, role, userId });
+            let resp = await Update({username, email, password, lastname, firstname, isactive, role, userid });
 
             // //Used to FETCH from locolhost
             // let resp = await fetch('http://localhost:8080/p2_foundation',{
@@ -141,9 +144,9 @@ function UpdatedUser(props: IUpdateProps) {
             <div className='form-wrapper'>
                 
                 <>
-                        <h4>Log into your account</h4>
+                        <h4>Update a User</h4>
                     <div>                   {/*when this change its handle @ line 35-38*/}
-                            <input type="text" id="userId" placeholder="Enter the UserId" onChange={getSelection}/>
+                            <input type="text" id="userId" placeholder="Enter the UserId" onChange={updateUserId}/>
                             <br/><br/>
                             <input type="text" id="firstName" placeholder="Enter the firstname" onChange={updateFirstame}/>
                             <br/><br/>
@@ -164,13 +167,9 @@ function UpdatedUser(props: IUpdateProps) {
 
                             <p></p>
 
+                            {/* <input type="boolean" id="isactive" placeholder="Enter boolean is active" onChange={updateIsactive}/>
                             
-                            
-                            
-                            
-                            <input type="boolean" id="isactive" placeholder="Enter boolean is active" onChange={updateIsactive}/>
-                            
-                            <br/><br/>
+                            <br/><br/> */}
                             
 
 

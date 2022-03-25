@@ -1,6 +1,8 @@
 import { Principal } from "../models/principal";
 import { appClient } from "./app-client";
 
+const API_URL = "http://localhost:8080/p2_foundation/auth";
+
                 //All async functions returns promise implicitly
 export const authenticate = async (credentials: {username: string, password: string | number}) => {
     return await appClient.post<Principal>('/auth', credentials, {
@@ -13,3 +15,6 @@ export const authenticate = async (credentials: {username: string, password: str
 export const logout = (setCurrentUser: (nextUser: Principal | undefined) => void) => {
     setCurrentUser(undefined);
 }
+
+
+
