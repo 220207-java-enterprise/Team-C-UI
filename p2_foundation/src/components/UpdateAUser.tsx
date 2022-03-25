@@ -181,6 +181,9 @@ function UpdatedUser(props: IUpdateProps) {
                             <option value="active">True</option>
                             <option value="not active">False</option>
                             </select>
+
+
+                    
                             
 
                             <input type="text" id="role" placeholder="Enter the role" onChange={updateRole}/>
@@ -189,6 +192,12 @@ function UpdatedUser(props: IUpdateProps) {
                             <br/><br/>
                             <button id="update-button" onClick={updateUser}>Update</button>
                             <br/><br/>
+
+                            <div id='login-link'>
+                                <Link id='login' to ='/login'>
+                                    <button id="login-button" onClick={updateUser}>Login</button>
+                                </Link>
+                            </div>
 
                             
                             

@@ -1,5 +1,5 @@
 import { SyntheticEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Principal } from "../models/principal";
 import { Reimbursement } from "../models/reimbursement";
 import { makeReimbursement } from "../remote/reimbursement-service";
@@ -183,8 +183,26 @@ function UpdatedReimbursement(props: IUpdateProps) {
                             <br/><br/>
                             <input type="text" id="statusId" placeholder="Enter status Id" onChange={updateStatusId}/>
                             <br/><br/>
-                            <input type="text" id="typeId" placeholder="Enter type Id" onChange={updateTypeId}/>
-                            <br/><br/>
+
+                            <label htmlFor="typeId">Select Type: </label>
+                            <select id="typeId" onClick={updateReimbursement}>
+                            <option value="lodging">Lodging</option>
+                            <option value="travel">Travel</option>
+                            <option value="food">Food</option>
+                            <option value="other">Other</option>
+                            </select>
+
+                            <div id='login-link'>
+                                <Link id='login' to ='/login'>
+                                    <button id="login-button" onClick={updateReimbursement}>Login</button>
+                                </Link>
+                            </div>
+
+                            {/* <input type="text" id="typeId" placeholder="Enter type Id" onChange={updateTypeId}/>
+                            <br/><br/> */}
+
+
+
                             <button id="update-button" onClick={updateReimbursement}>Update</button>
                             <br/><br/>
                             

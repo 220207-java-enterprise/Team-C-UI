@@ -173,8 +173,19 @@ function CreateReimbursement(props: IReimbursementProps) {
                             <br/><br/>
                             <input type="text" id="statusId" placeholder="Enter status Id" onChange={updateStatusId}/>
                             <br/><br/>
-                            <input type="text" id="typeId" placeholder="Enter type Id" onChange={updateTypeId}/>
-                            <br/><br/>
+                            
+                            
+                            {/* <input type="text" id="typeId" placeholder="Enter type Id" onChange={updateTypeId}/>
+                            <br/><br/> */}
+                            
+                            <label htmlFor="typeId">Select Type: </label>
+                            <select id="typeId" onClick={newReimbursment}>
+                            <option value="lodging">Lodging</option>
+                            <option value="travel">Travel</option>
+                            <option value="food">Food</option>
+                            <option value="other">Other</option>
+                            </select>
+                            
                             <button id="new-button" onClick={newReimbursment}>Update</button>
                             <br/><br/>
 
